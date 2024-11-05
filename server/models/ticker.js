@@ -3,10 +3,10 @@ const {Schema,model}=require('mongoose');
 const tickerSchema=new Schema({
     name:{type:String},
     volume:{type:Number},
-    sell:{type:Number},
-    buy:{type:Number},
+    sellingPrice:{type:Number},
+    buyPrice:{type:Number},
     baseUnit:{type:String},
-    last:{type:Number},
+    lastPrice:{type:Number},
 });
 
 const  Ticker=model('ticker',tickerSchema);

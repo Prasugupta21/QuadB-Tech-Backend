@@ -11,11 +11,11 @@ router.get('/',async(req,res)=>{
         const tickers=data.map((data)=>({
             name:data?.name,
             volume:data.volume,
-            buy:parseFloat(data.buy),
-             sell:parseFloat(data.sell),
+            buyPrice:parseFloat(data.buy),
+             sellingPrice:parseFloat(data.sell),
              baseUnit:data.base_unit,
             
-             last:parseFloat(data.last),
+             lastPrice:parseFloat(data.last),
 
         }));
         await Ticker.insertMany(tickers);
