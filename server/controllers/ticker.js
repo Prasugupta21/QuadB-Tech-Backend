@@ -3,18 +3,20 @@ const axios=require('axios');
 const storeTickers=async(req,res)=>{
     try {
         const response=await axios.get('https://api.wazirx.com/api/v2/tickers');
-        const data=Object.values(response.data).slice(0,10);
+        const data=Object.values(response.data).sort((a,b)=>b.last-a.last).slice(0,10);
 
         const tickers=data.map((data)=>({
-            name:data?.name,
+            
+            name:data.name.slice(0,3),
             volume:data.volume,
-            buyPrice:parseFloat(data.buy),
-             sellingPrice:parseFloat(data.sell),
+            buyPrice:data.buy,
+             sellingPrice:data.sell,
              baseUnit:data.base_unit,
             
-             lastPrice:parseFloat(data.last),
+             lastPrice:data.last,
 
         }));
+        await Ticker.deleteMany({});
         await Ticker.insertMany(tickers);
     
       return res.json(tickers);
@@ -27,7 +29,7 @@ const storeTickers=async(req,res)=>{
 
 const fetchTickers=async(req,res)=>{
     try{
-        const tickers=await Ticker.find();
+        const tickers=await Ticker.find({}).limit(10);
         return res.status(200).json(tickers);
 
     }catch(error){

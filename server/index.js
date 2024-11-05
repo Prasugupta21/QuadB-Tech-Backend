@@ -15,6 +15,6 @@ app.use('/',tickerRoute);
 
 
 
-app.listen(3000,(req,res)=>{
-    console.log('Server Started on Port 3000')
+app.listen(8000,(req,res)=>{
+    console.log('Server Started on Port 8000')
 })
