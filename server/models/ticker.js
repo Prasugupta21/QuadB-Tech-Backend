@@ -6,7 +6,7 @@ const tickerSchema=new Schema({
     sellingPrice:{type:Number},
     buyPrice:{type:Number},
     baseUnit:{type:String},
-    lastPrice:{type:Number},
+    lasnptPrice:{type:Number},
 });
 
 const  Ticker=model('ticker',tickerSchema);

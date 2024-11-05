@@ -3,7 +3,7 @@ const  express=require('express');
 
 
 const connectDB=require('./config/db');
-const fetchData=require('./routes/fetchData');
+const tickerRoute=require('./routes/ticker');
 
 connectDB();
 const app=express();
@@ -11,7 +11,7 @@ const app=express();
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-app.use('/',fetchData);
+app.use('/',tickerRoute);
 
 
 
